@@ -19,7 +19,7 @@ function Chat({ by, message }: Chat) {
 		return `<a href="${href}" target="_blank" rel="noopener noreferrer">${url}</a>`;
 	});
 	return (
-		<div className="flex w-full max-w-2xl flex-col space-y-2 whitespace-pre p-4">
+		<div className="flex w-full max-w-3xl flex-col space-y-2 whitespace-pre p-4">
 			<div className="text-sm font-bold">{by === 'ai' ? 'James' : 'You'}</div>
 			{by === 'ai' ? (
 				<div
@@ -87,7 +87,6 @@ export default function Home() {
 				throw new Error();
 			}
 			const resJSON: CreateCompletionResponse = await res.json();
-			console.log(resJSON.completion);
 			setIsLoading(false);
 			setChats((chats) => [
 				...chats,
@@ -116,15 +115,41 @@ export default function Home() {
 						<Chat {...chat} />
 					</li>
 				))}
+				{chats.length === 1 && (
+					<li className="flex w-full flex-col items-center">
+						<div className="flex w-full max-w-3xl flex-col items-start space-y-2 whitespace-pre p-4">
+							<p>For example:</p>
+							<button
+								onClick={() =>
+									setMessage('What painting setup do you recommend?')
+								}
+							>
+								What painting setup do you recommend?
+							</button>
+							<button
+								onClick={() => setMessage('What kind of brushes do you use?')}
+							>
+								What kind of brushes do you use?
+							</button>
+							<button
+								onClick={() =>
+									setMessage('How should I start my gouache painting?')
+								}
+							>
+								How should I start my gouache painting?
+							</button>
+						</div>
+					</li>
+				)}
 				{isLoading && (
 					<li className="flex w-full flex-col items-center">
 						<Chat by="ai" message="Thinking..." />
 					</li>
 				)}
 			</ul>
-			<div className="fixed bottom-0 left-0 right-0 flex flex-row items-center justify-center bg-gray-300 p-4">
+			<div className="fixed bottom-0 left-0 right-0 flex flex-row items-center justify-center bg-gray-300">
 				<form
-					className="relative flex w-full max-w-2xl"
+					className="relative flex w-full max-w-3xl p-4"
 					onSubmit={(e) => {
 						e.preventDefault();
 						onSubmit();
@@ -142,13 +167,13 @@ export default function Home() {
 					/>
 					{chats.length > 1 && (
 						<button
-							className="absolute bottom-2 left-4"
+							className="absolute bottom-6 left-8"
 							onClick={() => setChats([defaultChat])}
 						>
 							Reset
 						</button>
 					)}
-					<button type="submit" className="absolute bottom-2 right-4">
+					<button type="submit" className="absolute bottom-6 right-8">
 						Send
 					</button>
 				</form>

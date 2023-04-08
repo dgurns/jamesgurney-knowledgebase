@@ -16,7 +16,7 @@ export default function RootLayout({
 	return (
 		<html lang="en" className={inter.className}>
 			<body>
-				<header className="sticky top-0 p-4 bg-gray-200">
+				<header className="sticky top-0 bg-gray-200 p-4">
 					James Gurney Knowledge Base
 				</header>
 				{children}

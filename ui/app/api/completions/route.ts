@@ -72,6 +72,7 @@ export async function POST(request: Request) {
 					Using this content written by James Gurney - \`\`\`${documentsAsJSONStr}\`\`\` -
 					as well as the past chats in this conversation, answer questions as best you can. 
 					You can infer or use outside knowledge, but don't make up facts.
+					If you used any of the content, at the end of your answer, provide a list of URLs to the content you used.
 				`,
 			},
 			...chats.map(

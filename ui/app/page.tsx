@@ -12,22 +12,34 @@ export interface Chat {
 }
 
 function Chat({ by, message }: Chat) {
+	// if there are links in the messages, put in actual <a> tags
+	const urlRegex = /((https?:\/\/|www\.)[^\s]+\.[^\s]+)/gi;
+	const msgWithLinks = message.replace(urlRegex, (url) => {
+		const href = url.startsWith('http') ? url : `http://${url}`;
+		return `<a href="${href}" target="_blank" rel="noopener noreferrer">${url}</a>`;
+	});
 	return (
-		<div className="flex w-full max-w-2xl flex-col space-y-2 p-4">
+		<div className="flex w-full max-w-2xl flex-col space-y-2 whitespace-pre p-4">
 			<div className="text-sm font-bold">{by === 'ai' ? 'James' : 'You'}</div>
-			<div>{message}</div>
+			{by === 'ai' ? (
+				<div
+					dangerouslySetInnerHTML={{ __html: msgWithLinks }}
+					className="whitespace-pre-line"
+				/>
+			) : (
+				message
+			)}
 		</div>
 	);
 }
 
 export default function Home() {
-	const [chats, setChats] = useState<Chat[]>([
-		{
-			by: 'ai',
-			message:
-				"Hello, I'm James Gurney (in AI form). Ask me anything you want to know.",
-		},
-	]);
+	const defaultChat: Chat = {
+		by: 'ai',
+		message:
+			"Hello, I'm James Gurney (in AI form). Ask me anything you want to know.",
+	};
+	const [chats, setChats] = useState<Chat[]>([defaultChat]);
 	const [isLoading, setIsLoading] = useState(false);
 
 	const [message, setMessage] = useState('');
@@ -37,6 +49,17 @@ export default function Home() {
 			e.preventDefault();
 			onSubmit();
 		}
+	}
+
+	function scrollToBottom() {
+		setTimeout(
+			() =>
+				window.scrollTo({
+					top: document.body.scrollHeight,
+					behavior: 'smooth',
+				}),
+			100
+		);
 	}
 
 	async function onSubmit() {
@@ -51,14 +74,7 @@ export default function Home() {
 		setMessage('');
 		setChats(chatsWithUserMsg);
 		setIsLoading(true);
-		setTimeout(
-			() =>
-				window.scrollTo({
-					top: document.body.scrollHeight,
-					behavior: 'smooth',
-				}),
-			100
-		);
+		scrollToBottom();
 		try {
 			const body: CreateCompletionRequest = {
 				chats: chatsWithUserMsg,
@@ -71,11 +87,15 @@ export default function Home() {
 				throw new Error();
 			}
 			const resJSON: CreateCompletionResponse = await res.json();
+			console.log(resJSON.completion);
+			setIsLoading(false);
 			setChats((chats) => [
 				...chats,
 				{ by: 'ai', message: resJSON.completion },
 			]);
+			scrollToBottom();
 		} catch {
+			setIsLoading(false);
 			setChats((chats) => [
 				...chats,
 				{
@@ -83,14 +103,13 @@ export default function Home() {
 					message: 'Sorry, there was an error. Please try again.',
 				},
 			]);
+			scrollToBottom();
 			setMessage(userMsg);
-		} finally {
-			setIsLoading(false);
 		}
 	}
 
 	return (
-		<div className="flex w-full pb-[200px]" id="container">
+		<div className="flex w-full pb-[200px]">
 			<ul className="mt-4 flex w-full flex-col items-center even:bg-gray-200">
 				{chats.map((chat, i) => (
 					<li key={i} className="flex w-full flex-col items-center">
@@ -105,7 +124,7 @@ export default function Home() {
 			</ul>
 			<div className="fixed bottom-0 left-0 right-0 flex flex-row items-center justify-center bg-gray-300 p-4">
 				<form
-					className="flex w-full max-w-2xl"
+					className="relative flex w-full max-w-2xl"
 					onSubmit={(e) => {
 						e.preventDefault();
 						onSubmit();
@@ -121,7 +140,17 @@ export default function Home() {
 						onChange={(e) => setMessage(e.target.value)}
 						onKeyDown={onKeyDown}
 					/>
-					<button type="submit" hidden />
+					{chats.length > 1 && (
+						<button
+							className="absolute bottom-2 left-4"
+							onClick={() => setChats([defaultChat])}
+						>
+							Reset
+						</button>
+					)}
+					<button type="submit" className="absolute bottom-2 right-4">
+						Send
+					</button>
 				</form>
 			</div>
 		</div>

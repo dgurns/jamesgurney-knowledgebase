@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import './globals.css';
 import { Inter } from 'next/font/google';
 
@@ -16,8 +17,16 @@ export default function RootLayout({
 	return (
 		<html lang="en" className={inter.className}>
 			<body>
-				<header className="sticky top-0 bg-gray-200 p-4">
-					James Gurney Knowledge Base
+				<header className="sticky top-0 flex flex-row items-center justify-between bg-gray-200 p-4">
+					<Link href="/" className="text-inherit no-underline">
+						James Gurney Knowledge Base
+					</Link>
+					<div className="space-x-4">
+						<Link href="/about">About</Link>
+						<a href="https://jamesgurney.com" rel="noreferrer">
+							JamesGurney.com
+						</a>
+					</div>
 				</header>
 				{children}
 			</body>

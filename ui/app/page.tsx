@@ -13,7 +13,7 @@ export interface Chat {
 
 function Chat({ by, message }: Chat) {
 	// if there are links in the messages, put in actual <a> tags
-	const urlRegex = /((https?:\/\/|www\.)[^\s]+\.[^\s]+)/gi;
+	const urlRegex = /((https?:\/\/|www\.)[^\s]+(\.[^\s.]+)+)/gi;
 	const msgWithLinks = message.replace(urlRegex, (url) => {
 		const href = url.startsWith('http') ? url : `http://${url}`;
 		return `<a href="${href}" target="_blank" rel="noopener noreferrer">${url}</a>`;

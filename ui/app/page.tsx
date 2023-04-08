@@ -1,9 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import { RetrieveDocumentsRequest } from './api/retrieve-documents/route';
+import {
+	CreateCompletionRequest,
+	CreateCompletionResponse,
+} from './api/completions/route';
 
-interface Chat {
+export interface Chat {
 	by: 'user' | 'ai';
 	message: string;
 }
@@ -15,23 +18,6 @@ function Chat({ by, message }: Chat) {
 			<div>{message}</div>
 		</div>
 	);
-}
-
-async function retrieveDocuments(query: string): Promise<string> {
-	const req: RetrieveDocumentsRequest = {
-		query,
-	};
-	const res = await fetch('/api/retrieve-documents', {
-		method: 'POST',
-		body: JSON.stringify(req),
-	});
-	if (!res.ok) {
-		throw new Error(`Request failed with status ${res.status}`);
-	}
-	// we'll just pass the JSON response string to OpenAI API in the prompt and
-	// not bother typing it
-	const documentsAsJSONString = JSON.stringify(await res.json());
-	return documentsAsJSONString;
 }
 
 export default function Home() {
@@ -58,14 +44,12 @@ export default function Home() {
 			return;
 		}
 		const userMsg = message;
-		setMessage('');
-		setChats((chats) => [
+		const chatsWithUserMsg: Chat[] = [
 			...chats,
-			{
-				by: 'user',
-				message: userMsg,
-			},
-		]);
+			{ by: 'user', message: userMsg },
+		];
+		setMessage('');
+		setChats(chatsWithUserMsg);
 		setIsLoading(true);
 		setTimeout(
 			() =>
@@ -76,13 +60,27 @@ export default function Home() {
 			100
 		);
 		try {
-			const docs = await retrieveDocuments(userMsg);
+			const body: CreateCompletionRequest = {
+				chats: chatsWithUserMsg,
+			};
+			const res = await fetch('/api/completions', {
+				method: 'POST',
+				body: JSON.stringify(body),
+			});
+			if (!res.ok) {
+				throw new Error();
+			}
+			const resJSON: CreateCompletionResponse = await res.json();
+			setChats((chats) => [
+				...chats,
+				{ by: 'ai', message: resJSON.completion },
+			]);
 		} catch {
 			setChats((chats) => [
 				...chats,
 				{
 					by: 'ai',
-					message: 'Sorry, there was a server error. Please try again.',
+					message: 'Sorry, there was an error. Please try again.',
 				},
 			]);
 			setMessage(userMsg);
@@ -101,7 +99,7 @@ export default function Home() {
 				))}
 				{isLoading && (
 					<li className="flex w-full flex-col items-center">
-						<Chat by="ai" message="Loading..." />
+						<Chat by="ai" message="Thinking..." />
 					</li>
 				)}
 			</ul>

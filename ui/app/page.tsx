@@ -13,11 +13,16 @@ export interface Chat {
 
 function Chat({ by, message }: Chat) {
 	// if there are links in the messages, put in actual <a> tags
-	const urlRegex = /((https?:\/\/|www\.)[^\s]+(\.[^\s.]+)+)/gi;
+	const urlRegex = /((https?:\/\/|www\.)?[^\s]+(\.[^\s.]+)+)/gi;
 	const msgWithLinks = message.replace(urlRegex, (url) => {
-		const href = url.startsWith('http') ? url : `http://${url}`;
+		const href = url.startsWith('https')
+			? url
+			: url.startsWith('http')
+			? `https://${url.slice(7)}`
+			: `https://${url}`;
 		return `<a href="${href}" target="_blank" rel="noopener noreferrer">${url}</a>`;
 	});
+
 	return (
 		<div className="flex w-full max-w-3xl flex-col space-y-2 whitespace-pre p-4">
 			<div className="text-sm font-bold">{by === 'ai' ? 'James' : 'You'}</div>
@@ -132,11 +137,9 @@ export default function Home() {
 								What kind of brushes do you use?
 							</button>
 							<button
-								onClick={() =>
-									setMessage('How should I start my gouache painting?')
-								}
+								onClick={() => setMessage('How do you find inspiration?')}
 							>
-								How should I start my gouache painting?
+								How do you find inspiration?
 							</button>
 						</div>
 					</li>

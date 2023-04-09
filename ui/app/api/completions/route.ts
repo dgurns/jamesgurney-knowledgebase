@@ -50,6 +50,7 @@ export async function POST(request: Request) {
 	const documentsAsJSONStr = JSON.stringify(await documentsRes.json());
 	interface OpenAIRequest {
 		model: 'gpt-3.5-turbo' | 'gpt-4';
+		temperature?: number; // 0 to 2
 		messages: Array<{
 			role: 'system' | 'user' | 'assistant';
 			content: string;
@@ -64,6 +65,7 @@ export async function POST(request: Request) {
 	}
 	const completionReq: OpenAIRequest = {
 		model: 'gpt-3.5-turbo',
+		temperature: 1,
 		messages: [
 			{
 				role: 'system',
@@ -73,6 +75,8 @@ export async function POST(request: Request) {
 					as well as the past chats in this conversation, answer questions as best you can. 
 					You can infer or use outside knowledge, but don't make up facts.
 					If you used any of the content, at the end of your answer, provide a list of URLs to the content you used.
+					If you include a URL, make sure it is a real URL found in the provided content or from outside knowledge - don't make it up!
+					If the URL includes 'jamesgurney.com/site/', ignore it.
 				`,
 			},
 			...chats.map(

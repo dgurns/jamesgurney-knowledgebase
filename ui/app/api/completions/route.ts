@@ -76,14 +76,14 @@ export async function POST(request: Request) {
 					You can infer or use outside knowledge, but don't make up facts.
 					If you used any of the content, at the end of your answer, provide a list of URLs to the content you used.
 					If you include a URL, make sure it is a real URL found in the provided content or from outside knowledge - don't make it up!
-					If the URL includes 'jamesgurney.com/site/', ignore it.
+					Do not include any URLs which contain the substring "jamesgurney.com/site/". Instead use "jamesgurney.com".
 				`,
 			},
 			...chats.map(
 				(c) =>
 					({
 						role: c.by === 'user' ? 'user' : 'assistant',
-						content: c.message,
+						content: typeof c.message === 'string' ? c.message : '',
 					} as const)
 			),
 		],

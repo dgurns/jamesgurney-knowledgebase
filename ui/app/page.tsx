@@ -8,19 +8,13 @@ import {
 
 function Thinking() {
 	return (
-		<div className="flex items-center">
+		<div className="flex items-center space-x-1">
 			<span>Thinking</span>
-			<span className="ml-1 animate-fade-in-out">.</span>
-			<span
-				className="ml-1 animate-fade-in-out"
-				style={{ animationDelay: '0.2s' }}
-			>
+			<span className="animate-fade-in-out">.</span>
+			<span className="animate-fade-in-out" style={{ animationDelay: '0.2s' }}>
 				.
 			</span>
-			<span
-				className="ml-1 animate-fade-in-out"
-				style={{ animationDelay: '0.4s' }}
-			>
+			<span className="animate-fade-in-out" style={{ animationDelay: '0.4s' }}>
 				.
 			</span>
 		</div>

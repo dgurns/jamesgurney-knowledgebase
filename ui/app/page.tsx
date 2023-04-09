@@ -27,8 +27,10 @@ export interface Chat {
 }
 
 function Chat({ by, message }: Chat) {
-	// if there are links in the messages, put in actual <a> tags
-	const urlRegex = /((https?:\/\/|www\.)?[^\s]+(\.[^\s.]+)+)/gi;
+	// if there are links in the messages, put in actual <a> tags and sanitize
+	// the URLs to remove weird leading/trailing characters like [], (), or .
+	const urlRegex =
+		/((https?:\/\/|www\.)?[a-zA-Z][^\s\])]*(?<!\))[\w](\.[^\s.\])]+)+)/gi;
 	const formattedMessage =
 		typeof message !== 'string'
 			? message
@@ -155,9 +157,9 @@ export default function Home() {
 								What kind of brushes do you use?
 							</button>
 							<button
-								onClick={() => setMessage('How do you find inspiration?')}
+								onClick={() => setMessage('Any tips for finding inspiration?')}
 							>
-								How do you find inspiration?
+								Any tips for finding inspiration?
 							</button>
 						</div>
 					</li>

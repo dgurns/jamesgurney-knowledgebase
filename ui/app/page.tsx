@@ -6,33 +6,57 @@ import {
 	CreateCompletionResponse,
 } from './api/completions/route';
 
+function Thinking() {
+	return (
+		<div className="flex items-center">
+			<span>Thinking</span>
+			<span className="ml-1 animate-fade-in-out">.</span>
+			<span
+				className="ml-1 animate-fade-in-out"
+				style={{ animationDelay: '0.2s' }}
+			>
+				.
+			</span>
+			<span
+				className="ml-1 animate-fade-in-out"
+				style={{ animationDelay: '0.4s' }}
+			>
+				.
+			</span>
+		</div>
+	);
+}
+
 export interface Chat {
 	by: 'user' | 'ai';
-	message: string;
+	message: string | React.ReactNode;
 }
 
 function Chat({ by, message }: Chat) {
 	// if there are links in the messages, put in actual <a> tags
 	const urlRegex = /((https?:\/\/|www\.)?[^\s]+(\.[^\s.]+)+)/gi;
-	const msgWithLinks = message.replace(urlRegex, (url) => {
-		const href = url.startsWith('https')
-			? url
-			: url.startsWith('http')
-			? `https://${url.slice(7)}`
-			: `https://${url}`;
-		return `<a href="${href}" target="_blank" rel="noopener noreferrer">${url}</a>`;
-	});
+	const formattedMessage =
+		typeof message !== 'string'
+			? message
+			: message.replace(urlRegex, (url) => {
+					const href = url.startsWith('https')
+						? url
+						: url.startsWith('http')
+						? `https://${url.slice(7)}`
+						: `https://${url}`;
+					return `<a href="${href}" target="_blank" rel="noopener noreferrer">${url}</a>`;
+			  });
 
 	return (
 		<div className="flex w-full max-w-3xl flex-col space-y-2 whitespace-pre p-4">
 			<div className="text-sm font-bold">{by === 'ai' ? 'James' : 'You'}</div>
-			{by === 'ai' ? (
+			{by === 'user' || typeof formattedMessage !== 'string' ? (
+				formattedMessage
+			) : (
 				<div
-					dangerouslySetInnerHTML={{ __html: msgWithLinks }}
+					dangerouslySetInnerHTML={{ __html: formattedMessage }}
 					className="whitespace-pre-line"
 				/>
-			) : (
-				message
 			)}
 		</div>
 	);
@@ -146,7 +170,7 @@ export default function Home() {
 				)}
 				{isLoading && (
 					<li className="flex w-full flex-col items-center">
-						<Chat by="ai" message="Thinking..." />
+						<Chat by="ai" message={<Thinking />} />
 					</li>
 				)}
 			</ul>

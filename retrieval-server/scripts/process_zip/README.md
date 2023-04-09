@@ -7,7 +7,7 @@ This script is a utility to process a file dump of documents in a zip file and s
 To run this script from the terminal, navigate to this folder and use the following command:
 
 ```
-python process_zip.py --filepath path/to/file_dump.zip --custom_metadata '{"source": "email"}' --screen_for_pii True --extract_metadata True
+python process_zip.py --filepath path/to/file_dump.zip --custom_metadata '{"source": "file"}' --screen_for_pii True --extract_metadata True
 ```
 
 where:

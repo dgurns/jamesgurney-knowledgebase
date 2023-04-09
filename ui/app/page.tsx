@@ -134,9 +134,12 @@ export default function Home() {
 
 	return (
 		<div className="flex w-full pb-[200px]">
-			<ul className="mt-4 flex w-full flex-col items-center even:bg-gray-200">
+			<ul className="mt-4 flex w-full flex-col items-center">
 				{chats.map((chat, i) => (
-					<li key={i} className="flex w-full flex-col items-center">
+					<li
+						key={i}
+						className="flex w-full flex-col items-center even:bg-gray-100"
+					>
 						<Chat {...chat} />
 					</li>
 				))}
@@ -170,7 +173,7 @@ export default function Home() {
 					</li>
 				)}
 			</ul>
-			<div className="fixed bottom-0 left-0 right-0 flex flex-row items-center justify-center bg-gray-300">
+			<div className="fixed bottom-0 left-0 right-0 flex flex-row items-center justify-center bg-gray-300 shadow-t">
 				<form
 					className="relative flex w-full max-w-3xl p-4"
 					onSubmit={(e) => {

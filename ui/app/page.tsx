@@ -29,17 +29,19 @@ export interface Chat {
 function Chat({ by, message }: Chat) {
 	// if there are links in the messages, put in actual <a> tags and sanitize
 	// the URLs to remove weird leading/trailing characters like [], (), or .
-	const urlRegex =
-		/((https?:\/\/|www\.)?[a-zA-Z][^\s\])]*(?<!\))[\w](\.[^\s.\])]+)+)/gi;
+	const urlRegex = /((https?:\/\/|www\.)?[a-zA-Z][^\s]*\w(\.[^\s)]+)+)/gi;
 	const formattedMessage =
 		typeof message !== 'string'
 			? message
 			: message.replace(urlRegex, (url) => {
-					const href = url.startsWith('https')
-						? url
-						: url.startsWith('http')
-						? `https://${url.slice(7)}`
-						: `https://${url}`;
+					const startRegex = /^[^a-zA-Z]+/;
+					const endRegex = /[^a-zA-Z0-9]+$/;
+					const cleanedUrl = url.replace(startRegex, '').replace(endRegex, '');
+					const href = cleanedUrl.startsWith('https')
+						? cleanedUrl
+						: cleanedUrl.startsWith('http')
+						? `https://${cleanedUrl.slice(7)}`
+						: `https://${cleanedUrl}`;
 					return `<a href="${href}" target="_blank" rel="noopener noreferrer">${url}</a>`;
 			  });
 

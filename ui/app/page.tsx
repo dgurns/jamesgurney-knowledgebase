@@ -46,7 +46,9 @@ function Chat({ by, message }: Chat) {
 	return (
 		<div className="flex w-full max-w-3xl flex-col space-y-2 whitespace-pre p-4">
 			<div className="text-sm font-bold">{by === 'ai' ? 'James' : 'You'}</div>
-			{by === 'user' || typeof formattedMessage !== 'string' ? (
+			{by === 'user' ? (
+				message
+			) : typeof formattedMessage !== 'string' ? (
 				formattedMessage
 			) : (
 				<div

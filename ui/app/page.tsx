@@ -137,7 +137,7 @@ export default function Home() {
 	}
 
 	return (
-		<div className="flex w-full pb-[200px]">
+		<div className="flex w-full pb-[320px]">
 			<ul className="mt-4 flex w-full flex-col items-center">
 				{chats.map((chat, i) => (
 					<li

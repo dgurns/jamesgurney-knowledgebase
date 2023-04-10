@@ -1,6 +1,8 @@
 import Link from 'next/link';
-import './globals.css';
 import { Inter } from 'next/font/google';
+import Image from 'next/image';
+import './globals.css';
+import logo from '../public/logo.png';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -17,9 +19,9 @@ export default function RootLayout({
 	return (
 		<html lang="en" className={inter.className}>
 			<body>
-				<header className="sticky top-0 flex flex-row items-center justify-between bg-gray-200 p-4 pl-6 shadow">
+				<header className="sticky top-0 flex flex-row items-center justify-between bg-gray-200 p-2 pr-4 shadow">
 					<Link href="/" className="text-inherit no-underline">
-						James Gurney Knowledge Base
+						<Image src={logo} alt="Logo" height={40} />
 					</Link>
 					<div className="space-x-4">
 						<Link href="/about" className="text-gray-500 no-underline">

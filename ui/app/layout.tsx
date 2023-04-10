@@ -19,11 +19,11 @@ export default function RootLayout({
 	return (
 		<html lang="en" className={inter.className}>
 			<body>
-				<header className="sticky top-0 flex flex-row items-center justify-between bg-gray-200 p-2 pr-4 shadow">
+				<header className="sticky top-0 flex flex-row items-center justify-between space-x-6 bg-gray-200 p-2 pr-4 shadow">
 					<Link href="/" className="text-inherit no-underline">
 						<Image src={logo} alt="Logo" height={40} />
 					</Link>
-					<div className="space-x-4">
+					<div className="space-x-4 text-sm sm:text-base">
 						<Link href="/about" className="text-gray-500 no-underline">
 							About
 						</Link>

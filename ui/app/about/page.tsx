@@ -48,9 +48,13 @@ export default function About() {
 					but don{"'"}t make anything up.{'"'}
 				</p>
 				<p>
-					Over time we{"'"}ll add more material to the database, including video
-					transcripts, books, and interviews. We may also explore making this
-					available as a ChatGPT plugin.
+					So far the database has been populated with GurneyJourney blog posts,
+					transcripts of instructional videos like the {'"'}In The Wild{'"'}{' '}
+					series, and magazine interviews.
+				</p>
+				<p>
+					Over time we{"'"}ll add more material to the database. We may also
+					explore making this available as a ChatGPT plugin.
 				</p>
 				<p>
 					The code is open sourced{' '}

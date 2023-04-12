@@ -137,7 +137,7 @@ export default function Home() {
 	}
 
 	return (
-		<div className="flex w-full pb-[320px]">
+		<div className="flex w-full flex-col pb-[320px]">
 			<ul className="mt-4 flex w-full flex-col items-center">
 				{chats.map((chat, i) => (
 					<li
@@ -189,7 +189,6 @@ export default function Home() {
 						className="w-full resize-none"
 						rows={3}
 						placeholder="Your message..."
-						autoFocus
 						required
 						value={message}
 						onChange={(e) => setMessage(e.target.value)}

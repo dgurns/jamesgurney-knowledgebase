@@ -2,7 +2,8 @@ import Link from 'next/link';
 import { Inter } from 'next/font/google';
 import Image from 'next/image';
 import './globals.css';
-import logo from '../public/logo.png';
+import jg from '../public/JamesGurney.webp';
+import knowledgeBase from '../public/knowledgebase.webp';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -19,10 +20,20 @@ export default function RootLayout({
 	return (
 		<html lang="en" className={inter.className}>
 			<body>
-				<header className="sticky top-0 flex flex-row items-center justify-between space-x-6 bg-gray-200 p-2 pr-4 shadow">
-					<Link href="/" className="text-inherit no-underline">
-						<Image src={logo} alt="Logo" height={40} />
-					</Link>
+				<header className="sticky top-0 flex flex-row items-center justify-between space-x-6 bg-gray-200 p-1 pl-3 pr-4 shadow">
+					<div className="flex flex-row items-center space-x-4">
+						<Link href="/" className="text-inherit no-underline">
+							<Image src={jg} alt="James Gurney" height={44} />
+						</Link>
+						<Link href="/" className="text-inherit no-underline">
+							<Image
+								src={knowledgeBase}
+								alt="Knowledge Base"
+								height={24}
+								className="rounded"
+							/>
+						</Link>
+					</div>
 					<div className="space-x-4 text-sm sm:text-base">
 						<Link href="/about" className="text-gray-500 no-underline">
 							About

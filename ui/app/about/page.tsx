@@ -1,7 +1,11 @@
+import Image from 'next/image';
+import tagline from '../../public/tagline.webp';
+
 export default function About() {
 	return (
 		<div className="flex w-full flex-col items-center px-4 py-8">
 			<div className="flex w-full max-w-3xl flex-col space-y-4">
+				<Image src={tagline} height={24} alt="Tagline" className="pb-2" />
 				<p>
 					This site aims to give people an easy way to learn from James Gurney
 					by asking questions.

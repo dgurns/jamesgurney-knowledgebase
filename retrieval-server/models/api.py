@@ -3,6 +3,7 @@ from models.models import (
     DocumentMetadataFilter,
     Query,
     QueryResult,
+    ChatMessage,
 )
 from pydantic import BaseModel
 from typing import List, Optional
@@ -32,3 +33,11 @@ class DeleteRequest(BaseModel):
 
 class DeleteResponse(BaseModel):
     success: bool
+
+
+class CompletionRequest(BaseModel):
+    messages: List[ChatMessage]
+
+
+class CompletionResponse(BaseModel):
+    completion: str

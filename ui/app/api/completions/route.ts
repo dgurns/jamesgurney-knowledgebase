@@ -20,15 +20,16 @@ export async function POST(request: Request) {
 	if (!chats.length) {
 		return NextResponse.error();
 	}
-	const userChatMessages = chats
+	const userChatMessages = [...chats]
 		.filter((c) => c.by === 'user')
+		.slice(-2) // use the last 2 user messages to search documents
 		.map((c) => c.message)
 		.join(', ');
 	const documentsReq: DocumentsRetrievalRequest = {
 		queries: [
 			{
 				query: userChatMessages,
-				top_k: 3,
+				top_k: 4,
 			},
 		],
 	};
@@ -77,9 +78,11 @@ export async function POST(request: Request) {
 					If you used any of the content, at the end of your answer, provide a list of URLs to the content you used.
 					If you include a URL, make sure it is a real URL found in the provided content or from outside knowledge - don't make it up!
 					Do not include any URLs which contain the substring "jamesgurney.com/site/". Instead use "jamesgurney.com".
+					If people are looking for products or the shop, always send them to a URL on "jamesgurney.com".
 				`,
 			},
-			...chats.map(
+			// set a max context window to avoid passing in too many tokens
+			...chats.slice(-15).map(
 				(c) =>
 					({
 						role: c.by === 'user' ? 'user' : 'assistant',

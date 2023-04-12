@@ -46,7 +46,7 @@ function Chat({ by, message }: Chat) {
 			  });
 
 	return (
-		<div className="flex w-full max-w-3xl flex-col space-y-2 whitespace-pre p-4">
+		<div className="flex w-full max-w-3xl flex-col space-y-2 whitespace-pre-line p-4">
 			<div className="text-sm font-bold">{by === 'ai' ? 'James' : 'You'}</div>
 			{by === 'user' ? (
 				message
@@ -193,6 +193,7 @@ export default function Home() {
 						value={message}
 						onChange={(e) => setMessage(e.target.value)}
 						onKeyDown={onKeyDown}
+						maxLength={500}
 					/>
 					{chats.length > 1 && (
 						<button

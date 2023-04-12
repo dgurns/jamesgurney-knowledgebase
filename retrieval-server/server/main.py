@@ -158,7 +158,7 @@ async def delete(
 async def completion(
     request: CompletionRequest = Body(...),
 ):
-    if not (request.messages):
+    if not (request.messages) or len(request.messages) == 0:
         raise HTTPException(
             status_code=400,
             detail="Missing required field: messages",
@@ -189,7 +189,7 @@ async def completion(
         )
         msgs = [system_msg] + request.messages
 
-        def chat_message_to_dict(chat_message):
+        def chat_message_to_dict(chat_message: ChatMessage):
             return {
                 "role": chat_message.role,
                 "content": chat_message.content,

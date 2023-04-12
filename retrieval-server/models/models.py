@@ -75,6 +75,3 @@ class ChatMessageRole(str, Enum):
 class ChatMessage(BaseModel):
     role: ChatMessageRole
     content: str
-
-    class Config:
-        json_encoders = {ChatMessageRole: lambda role: role.value}

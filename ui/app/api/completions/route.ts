@@ -29,7 +29,7 @@ export async function POST(request: Request) {
 		queries: [
 			{
 				query: userChatMessages,
-				top_k: 4,
+				top_k: 3,
 			},
 		],
 	};
@@ -75,10 +75,9 @@ export async function POST(request: Request) {
 					Using this content written by James Gurney - \`\`\`${documentsAsJSONStr}\`\`\` -
 					as well as the past chats in this conversation, answer questions as best you can. 
 					You can infer or use outside knowledge, but don't make up facts.
-					If you used any of the content, at the end of your answer, provide a list of URLs to the content you used.
+					If you used any of the content, at the end of your answer provide a list of URLs to the content you used.
 					If you include a URL, make sure it is a real URL found in the provided content or from outside knowledge - don't make it up!
 					Do not include any URLs which contain the substring "jamesgurney.com/site/". Instead use "jamesgurney.com".
-					If people are looking for products or the shop, always send them to a URL on "jamesgurney.com".
 				`,
 			},
 			// set a max context window to avoid passing in too many tokens

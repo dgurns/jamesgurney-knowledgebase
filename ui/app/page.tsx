@@ -1,10 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-	CreateCompletionRequest,
-	CreateCompletionResponse,
-} from './api/completions/route';
+import { CompletionRequest, CompletionResponse } from './api/completion/route';
 
 function Thinking() {
 	return (
@@ -105,17 +102,20 @@ export default function Home() {
 		setIsLoading(true);
 		scrollToBottom();
 		try {
-			const body: CreateCompletionRequest = {
-				chats: chatsWithUserMsg,
+			const body: CompletionRequest = {
+				messages: chatsWithUserMsg.map((c) => ({
+					role: c.by === 'user' ? 'user' : 'assistant',
+					content: typeof c.message === 'string' ? c.message : '',
+				})),
 			};
-			const res = await fetch('/api/completions', {
+			const res = await fetch('/api/completion', {
 				method: 'POST',
 				body: JSON.stringify(body),
 			});
 			if (!res.ok) {
 				throw new Error();
 			}
-			const resJSON: CreateCompletionResponse = await res.json();
+			const resJSON: CompletionResponse = await res.json();
 			setIsLoading(false);
 			setChats((chats) => [
 				...chats,

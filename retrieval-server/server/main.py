@@ -2,7 +2,16 @@ import os
 import traceback
 from typing import Optional
 import uvicorn
-from fastapi import FastAPI, File, Form, HTTPException, Depends, Body, UploadFile
+from fastapi import (
+    FastAPI,
+    Request,
+    File,
+    Form,
+    HTTPException,
+    Depends,
+    Body,
+    UploadFile,
+)
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from fastapi.staticfiles import StaticFiles
 
@@ -36,6 +45,7 @@ def validate_token(credentials: HTTPAuthorizationCredentials = Depends(bearer_sc
 
 
 app = FastAPI(dependencies=[Depends(validate_token)])
+
 app.mount("/.well-known", StaticFiles(directory=".well-known"), name="static")
 
 # Create a sub-application, in order to access just the query endpoint in an OpenAPI schema, found at http://0.0.0.0:8000/sub/openapi.json when the app is running locally
@@ -43,7 +53,7 @@ sub_app = FastAPI(
     title="Retrieval Plugin API",
     description="A retrieval API for querying and filtering documents based on natural language queries and metadata",
     version="1.0.0",
-    servers=[{"url": "https://your-app-url.com"}],
+    servers=[{"url": "https://jamesgurney-retrieval-server.fly.dev"}],
     dependencies=[Depends(validate_token)],
 )
 app.mount("/sub", sub_app)
@@ -158,6 +168,7 @@ async def delete(
 async def completion(
     request: CompletionRequest = Body(...),
 ):
+    print("REQ", request)
     if not (request.messages) or len(request.messages) == 0:
         raise HTTPException(
             status_code=400,

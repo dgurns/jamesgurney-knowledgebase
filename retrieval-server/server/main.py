@@ -168,7 +168,6 @@ async def delete(
 async def completion(
     request: CompletionRequest = Body(...),
 ):
-    print("REQ", request)
     if not (request.messages) or len(request.messages) == 0:
         raise HTTPException(
             status_code=400,

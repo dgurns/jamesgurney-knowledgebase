@@ -160,9 +160,7 @@ export default function Home() {
 							</button>
 							<button
 								onClick={() =>
-									setMessage(
-										'What are some limited palettes you would recommend?'
-									)
+									setMessage('What are some limited palettes you recommend?')
 								}
 							>
 								What are some limited palettes you would recommend?

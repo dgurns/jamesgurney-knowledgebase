@@ -159,9 +159,13 @@ export default function Home() {
 								What painting setup do you recommend?
 							</button>
 							<button
-								onClick={() => setMessage('What kind of brushes do you use?')}
+								onClick={() =>
+									setMessage(
+										'What are some limited palettes you would recommend?'
+									)
+								}
 							>
-								What kind of brushes do you use?
+								What are some limited palettes you would recommend?
 							</button>
 							<button
 								onClick={() => setMessage('Any tips for finding inspiration?')}

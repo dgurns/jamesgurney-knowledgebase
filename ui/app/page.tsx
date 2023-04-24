@@ -163,7 +163,7 @@ export default function Home() {
 									setMessage('What are some limited palettes you recommend?')
 								}
 							>
-								What are some limited palettes you would recommend?
+								What are some limited palettes you recommend?
 							</button>
 							<button
 								onClick={() => setMessage('Any tips for finding inspiration?')}

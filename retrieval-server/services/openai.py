@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, AsyncGenerator
 import openai
 
 
@@ -56,3 +56,35 @@ def get_chat_completion(
     completion = choices[0].message.content.strip()
     print(f"Completion: {completion}")
     return completion
+
+
+@retry(wait=wait_random_exponential(min=1, max=20), stop=stop_after_attempt(3))
+async def get_streaming_chat_completion(
+    messages,
+    model="gpt-3.5-turbo",  # use "gpt-4" for better results
+):
+    """
+    Generate a streaming chat completion using OpenAI's chat completion API.
+
+    Args:
+        messages: The list of messages in the chat history.
+        model: The name of the model to use for the completion. Default is gpt-3.5-turbo, which is a fast, cheap and versatile model. Use gpt-4 for higher quality but slower results.
+
+    Returns:
+        A stream returning each chunk of the chat completion.
+
+    Raises:
+        Exception: If the OpenAI API call fails.
+    """
+    # call the OpenAI chat completion API with the given messages
+    response = openai.ChatCompletion.create(
+        model=model, messages=messages, max_tokens=300, stream=True
+    )
+
+    for chunk in response:  # type: ignore
+        choice = chunk["choices"][0]  # type: ignore
+        if choice["finish_reason"] == "stop":
+            break
+        if "role" in choice["delta"]:
+            continue
+        yield choice["delta"]["content"]

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { CompletionRequest, CompletionResponse } from './api/completion/route';
+import { CompletionRequest } from './api/completion/route';
 
 function Thinking() {
 	return (
@@ -108,20 +108,30 @@ export default function Home() {
 					content: typeof c.message === 'string' ? c.message : '',
 				})),
 			};
-			const res = await fetch('/api/completion', {
+			const res = await fetch('/api/streaming-completion', {
 				method: 'POST',
 				body: JSON.stringify(body),
 			});
-			if (!res.ok) {
+			if (!res.body || !res.ok) {
 				throw new Error();
 			}
-			const resJSON: CompletionResponse = await res.json();
 			setIsLoading(false);
-			setChats((chats) => [
-				...chats,
-				{ by: 'ai', message: resJSON.completion },
-			]);
-			scrollToBottom();
+			const reader = res.body.getReader();
+			let accumulatedChunks = '';
+			while (true) {
+				const { done, value } = await reader.read();
+				if (done) {
+					break;
+				}
+				const chunk = new TextDecoder('utf-8').decode(value);
+				accumulatedChunks += chunk;
+				setChats((chats) => {
+					const aiIsAnswering = chats[chats.length - 1].by === 'ai';
+					const prevChats = aiIsAnswering ? chats.slice(0, -1) : chats;
+					return [...prevChats, { by: 'ai', message: accumulatedChunks }];
+				});
+				scrollToBottom();
+			}
 		} catch {
 			setIsLoading(false);
 			setChats((chats) => [

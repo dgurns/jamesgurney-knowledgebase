@@ -14,6 +14,7 @@ from fastapi import (
 )
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses import StreamingResponse, Response
 
 from models.api import (
     DeleteRequest,
@@ -24,11 +25,12 @@ from models.api import (
     UpsertResponse,
     CompletionRequest,
     CompletionResponse,
+    StreamingCompletionRequest,
 )
 from models.models import ChatMessage, ChatMessageRole
 from datastore.factory import get_datastore
 from services.file import get_document_from_file
-from services.openai import get_chat_completion
+from services.openai import get_chat_completion, get_streaming_chat_completion
 
 from models.models import DocumentMetadata, Source, Query, QueryResult
 from typing import List
@@ -187,15 +189,13 @@ async def completion(
                 docs_context += f"Document {idx + 1}: Text: `{doc.text}` URL: `{doc.metadata.url}`, "
         system_msg = ChatMessage(
             role=ChatMessageRole.system,
-            content=f"""
-                Answer as if you are James Gurney by saying 'I'. 
-	              Using this content written by James Gurney - `{docs_context}` - 
-								as well as the past chats in this conversation, answer questions as best you can. 
-								You can infer or use outside knowledge, but don't make up facts. 
-								If you used any of the content, at the end of your answer provide a list of URLs to the content you used. 
-								If you include a URL, make sure it is a real URL found in the provided content or from outside knowledge - don't make it up! 
-								Do not include any URLs which contain the substring 'jamesgurney.com/site/'. Instead use 'jamesgurney.com'.
-            """,
+            content=f"""Answer as if you are James Gurney by saying 'I'. 
+Using this content written by James Gurney - `{docs_context}` - 
+as well as the past chats in this conversation, answer questions as best you can. 
+You can infer or use outside knowledge, but don't make up facts. 
+If you used any of the content, at the end of your answer provide a list of URLs to the content you used. 
+If you include a URL, make sure it is a real URL found in the provided content or from outside knowledge - don't make it up! 
+Do not include any URLs which contain the substring 'jamesgurney.com/site/'. Instead use 'jamesgurney.com'""",
         )
         msgs = [system_msg] + request.messages
 
@@ -208,6 +208,58 @@ async def completion(
         msgs_dict = [chat_message_to_dict(m) for m in msgs]
         completion = get_chat_completion(msgs_dict, "gpt-3.5-turbo")
         return CompletionResponse(completion=completion)
+    except Exception as e:
+        print("Error:", e)
+        print("Traceback:", traceback.format_exc())
+        raise HTTPException(status_code=500, detail="Internal Service Error")
+
+
+@app.post(
+    "/streaming-completion",
+)
+async def streaming_completion(
+    request: StreamingCompletionRequest = Body(...),
+):
+    if not (request.messages) or len(request.messages) == 0:
+        raise HTTPException(
+            status_code=400,
+            detail="Missing required field: messages",
+        )
+    try:
+        docs_query = ""
+        for msg in request.messages[-2:]:
+            if msg.role == "user":
+                docs_query += f"{msg.content}, "
+        results: List[QueryResult] = await datastore.query(
+            queries=[Query(query=docs_query, top_k=3)]
+        )
+        docs_context = ""
+        for r in results:
+            for idx, doc in enumerate(r.results):
+                docs_context += f"Document {idx + 1}: Text: `{doc.text}` URL: `{doc.metadata.url}`, "
+        system_msg = ChatMessage(
+            role=ChatMessageRole.system,
+            content=f"""Answer as if you are James Gurney by saying 'I'. 
+Using this content written by James Gurney - `{docs_context}` - 
+as well as the past chats in this conversation, answer questions as best you can. 
+You can infer or use outside knowledge, but don't make up facts. 
+If you used any of the content, at the end of your answer provide a list of URLs to the content you used. 
+If you include a URL, make sure it is a real URL found in the provided content or from outside knowledge - don't make it up! 
+Do not include any URLs which contain the substring 'jamesgurney.com/site/'. Instead use 'jamesgurney.com'""",
+        )
+        msgs = [system_msg] + request.messages
+
+        def chat_message_to_dict(chat_message: ChatMessage):
+            return {
+                "role": chat_message.role,
+                "content": chat_message.content,
+            }
+
+        msgs_dict = [chat_message_to_dict(m) for m in msgs]
+        return StreamingResponse(
+            get_streaming_chat_completion(msgs_dict, "gpt-3.5-turbo"),
+            media_type="text/event-stream",
+        )
     except Exception as e:
         print("Error:", e)
         print("Traceback:", traceback.format_exc())

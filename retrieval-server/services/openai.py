@@ -81,10 +81,16 @@ async def get_streaming_chat_completion(
         model=model, messages=messages, max_tokens=300, stream=True
     )
 
+    full_completion = ""
+
     for chunk in response:  # type: ignore
         choice = chunk["choices"][0]  # type: ignore
         if choice["finish_reason"] == "stop":
             break
         if "role" in choice["delta"]:
             continue
-        yield choice["delta"]["content"]
+        chunk = choice["delta"]["content"]
+        full_completion += chunk
+        yield chunk
+
+    print(f"Completion: {full_completion}")

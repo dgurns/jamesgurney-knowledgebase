@@ -25,7 +25,6 @@ from models.api import (
     UpsertResponse,
     CompletionRequest,
     CompletionResponse,
-    StreamingCompletionRequest,
 )
 from models.models import ChatMessage, ChatMessageRole
 from datastore.factory import get_datastore
@@ -218,7 +217,7 @@ Do not include any URLs which contain the substring 'jamesgurney.com/site/'. Ins
     "/streaming-completion",
 )
 async def streaming_completion(
-    request: StreamingCompletionRequest = Body(...),
+    request: CompletionRequest = Body(...),
 ):
     if not (request.messages) or len(request.messages) == 0:
         raise HTTPException(

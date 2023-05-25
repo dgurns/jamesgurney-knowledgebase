@@ -41,7 +41,3 @@ class CompletionRequest(BaseModel):
 
 class CompletionResponse(BaseModel):
     completion: str
-
-
-class StreamingCompletionRequest(BaseModel):
-    messages: List[ChatMessage]

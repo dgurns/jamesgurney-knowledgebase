@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { Inter } from 'next/font/google';
 import Image from 'next/image';
-import { Analytics } from '@vercel/analytics/react';
 import './globals.css';
 import jg from '../public/JamesGurney.webp';
 import jimbotImg from '../public/ask_jimbot.webp';
@@ -50,7 +49,6 @@ export default function RootLayout({
 				</header>
 				{children}
 			</body>
-			<Analytics />
 		</html>
 	);
 }

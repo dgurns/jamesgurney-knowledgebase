@@ -62,7 +62,7 @@ def get_chat_completion(
 async def get_streaming_chat_completion(
     messages,
     model="gpt-3.5-turbo",  # use "gpt-4" for better results
-):
+) -> AsyncGenerator[str, None]:
     """
     Generate a streaming chat completion using OpenAI's chat completion API.
 

@@ -8,10 +8,6 @@ export interface CompletionRequest {
 	messages: Array<{ role: 'user' | 'assistant'; content: string }>;
 }
 
-export interface CompletionResponse {
-	completion: string;
-}
-
 export async function POST(request: Request) {
 	// restrict this route handler to same-origin only
 	const origin = request.headers.get('origin');

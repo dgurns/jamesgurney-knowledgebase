@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { CompletionRequest } from './api/completion/route';
 
 function Thinking() {
@@ -44,7 +44,7 @@ function Chat({ by, message }: Chat) {
 
 	return (
 		<div className="flex w-full max-w-3xl flex-col space-y-2 whitespace-pre-line p-4">
-			<div className="text-sm font-bold">{by === 'ai' ? 'James' : 'You'}</div>
+			<div className="text-sm font-bold">{by === 'ai' ? 'Jimbot' : 'You'}</div>
 			{by === 'user' ? (
 				message
 			) : typeof formattedMessage !== 'string' ? (
@@ -66,7 +66,10 @@ export default function Home() {
 			"Hello, I'm James Gurney (in AI form). Ask me anything you want to know.",
 	};
 	const [chats, setChats] = useState<Chat[]>([defaultChat]);
+
+	const abortControllerRef = useRef(new AbortController());
 	const [isLoading, setIsLoading] = useState(false);
+	const [isAnswering, setIsAnswering] = useState(false);
 
 	const [message, setMessage] = useState('');
 
@@ -88,8 +91,21 @@ export default function Home() {
 		);
 	}
 
+	function onCancel(e?: React.SyntheticEvent<HTMLButtonElement>) {
+		if (e) {
+			e.preventDefault();
+		}
+		abortControllerRef.current.abort();
+		abortControllerRef.current = new AbortController();
+	}
+
+	function onReset() {
+		onCancel();
+		setChats([defaultChat]);
+	}
+
 	async function onSubmit() {
-		if (isLoading) {
+		if (isLoading || isAnswering) {
 			return;
 		}
 		const userMsg = message;
@@ -111,11 +127,13 @@ export default function Home() {
 			const res = await fetch('/api/streaming-completion', {
 				method: 'POST',
 				body: JSON.stringify(body),
+				signal: abortControllerRef.current.signal,
 			});
 			if (!res.body || !res.ok) {
 				throw new Error();
 			}
 			setIsLoading(false);
+			setIsAnswering(true);
 			const reader = res.body.getReader();
 			let accumulatedChunks = '';
 			while (true) {
@@ -126,14 +144,19 @@ export default function Home() {
 				const chunk = new TextDecoder('utf-8').decode(value);
 				accumulatedChunks += chunk;
 				setChats((chats) => {
-					const aiIsAnswering = chats[chats.length - 1].by === 'ai';
-					const prevChats = aiIsAnswering ? chats.slice(0, -1) : chats;
+					const latestChatIsByAI = chats[chats.length - 1].by === 'ai';
+					const prevChats = latestChatIsByAI ? chats.slice(0, -1) : chats;
 					return [...prevChats, { by: 'ai', message: accumulatedChunks }];
 				});
 				scrollToBottom();
 			}
-		} catch {
+			setIsAnswering(false);
+		} catch (err) {
 			setIsLoading(false);
+			setIsAnswering(false);
+			if ((err as Error).name === 'AbortError') {
+				return;
+			}
 			setChats((chats) => [
 				...chats,
 				{
@@ -208,16 +231,19 @@ export default function Home() {
 						maxLength={500}
 					/>
 					{chats.length > 1 && (
-						<button
-							className="absolute bottom-6 left-8"
-							onClick={() => setChats([defaultChat])}
-						>
+						<button className="absolute bottom-6 left-8" onClick={onReset}>
 							Reset
 						</button>
 					)}
-					<button type="submit" className="absolute bottom-6 right-8">
-						Send
-					</button>
+					{isLoading || isAnswering ? (
+						<button onClick={onCancel} className="absolute bottom-6 right-8">
+							Stop
+						</button>
+					) : (
+						<button type="submit" className="absolute bottom-6 right-8">
+							Send
+						</button>
+					)}
 				</form>
 			</div>
 		</div>

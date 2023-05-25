@@ -4,7 +4,6 @@ from typing import Optional
 import uvicorn
 from fastapi import (
     FastAPI,
-    Request,
     File,
     Form,
     HTTPException,
@@ -14,7 +13,7 @@ from fastapi import (
 )
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import StreamingResponse, Response
+from fastapi.responses import StreamingResponse
 
 from models.api import (
     DeleteRequest,
@@ -25,6 +24,7 @@ from models.api import (
     UpsertResponse,
     CompletionRequest,
     CompletionResponse,
+    StreamingCompletionRequest,
 )
 from models.models import ChatMessage, ChatMessageRole
 from datastore.factory import get_datastore
@@ -32,7 +32,7 @@ from services.file import get_document_from_file
 from services.openai import get_chat_completion, get_streaming_chat_completion
 
 from models.models import DocumentMetadata, Source, Query, QueryResult
-from typing import List
+from typing import List, Iterable
 
 bearer_scheme = HTTPBearer()
 BEARER_TOKEN = os.environ.get("BEARER_TOKEN")
@@ -213,11 +213,9 @@ Do not include any URLs which contain the substring 'jamesgurney.com/site/'. Ins
         raise HTTPException(status_code=500, detail="Internal Service Error")
 
 
-@app.post(
-    "/streaming-completion",
-)
+@app.post("/streaming-completion", response_model=Iterable[str])
 async def streaming_completion(
-    request: CompletionRequest = Body(...),
+    request: StreamingCompletionRequest = Body(...),
 ):
     if not (request.messages) or len(request.messages) == 0:
         raise HTTPException(

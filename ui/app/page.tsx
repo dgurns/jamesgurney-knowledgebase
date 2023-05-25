@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { CompletionRequest } from './api/completion/route';
 
 function Thinking() {
@@ -67,7 +67,6 @@ export default function Home() {
 	};
 	const [chats, setChats] = useState<Chat[]>([defaultChat]);
 
-	const abortControllerRef = useRef(new AbortController());
 	const [isLoading, setIsLoading] = useState(false);
 	const [isAnswering, setIsAnswering] = useState(false);
 
@@ -91,17 +90,8 @@ export default function Home() {
 		);
 	}
 
-	function onCancel(e?: React.SyntheticEvent<HTMLButtonElement>) {
-		if (e) {
-			e.preventDefault();
-		}
-		abortControllerRef.current.abort();
-		abortControllerRef.current = new AbortController();
-	}
-
 	function onReset() {
-		onCancel();
-		setChats([defaultChat]);
+		window.location.reload();
 	}
 
 	async function onSubmit() {
@@ -127,7 +117,6 @@ export default function Home() {
 			const res = await fetch('/api/streaming-completion', {
 				method: 'POST',
 				body: JSON.stringify(body),
-				signal: abortControllerRef.current.signal,
 			});
 			if (!res.body || !res.ok) {
 				throw new Error();
@@ -235,15 +224,13 @@ export default function Home() {
 							Reset
 						</button>
 					)}
-					{isLoading || isAnswering ? (
-						<button onClick={onCancel} className="absolute bottom-6 right-8">
-							Stop
-						</button>
-					) : (
-						<button type="submit" className="absolute bottom-6 right-8">
-							Send
-						</button>
-					)}
+					<button
+						type="submit"
+						disabled={isLoading || isAnswering}
+						className="absolute bottom-6 right-8"
+					>
+						Send
+					</button>
 				</form>
 			</div>
 		</div>

@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { Analytics } from '@vercel/analytics/react';
 import './globals.css';
 import jg from '../public/JamesGurney.webp';
-import knowledgeBase from '../public/knowledgebase.webp';
+import jimbotImg from '../public/ask_jimbot.webp';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -26,11 +26,11 @@ export default function RootLayout({
 						<Link href="/" className="text-inherit no-underline">
 							<Image src={jg} alt="James Gurney" height={44} />
 						</Link>
-						<Link href="/" className="text-inherit no-underline">
+						<Link href="/" className="hidden text-inherit no-underline md:flex">
 							<Image
-								src={knowledgeBase}
-								alt="Knowledge Base"
-								height={24}
+								src={jimbotImg}
+								alt="Ask Jimbot"
+								height={16}
 								className="rounded"
 							/>
 						</Link>

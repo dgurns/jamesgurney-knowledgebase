@@ -1,8 +1,11 @@
 from typing import List, AsyncGenerator
 import openai
+import os
 
 
 from tenacity import retry, wait_random_exponential, stop_after_attempt
+
+openai.organization = os.getenv("OPENAI_ORGANIZATION")
 
 
 @retry(wait=wait_random_exponential(min=1, max=20), stop=stop_after_attempt(3))

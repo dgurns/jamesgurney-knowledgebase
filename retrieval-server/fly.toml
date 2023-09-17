@@ -1,38 +1,35 @@
-# fly.toml file generated for jamesgurney-retrieval-server on 2023-04-08T22:49:55+01:00
+# fly.toml app configuration file generated for jamesgurney-retrieval-server on 2023-09-17T20:54:02+01:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
 
 app = "jamesgurney-retrieval-server"
-kill_signal = "SIGINT"
-kill_timeout = 5
 primary_region = "ewr"
-processes = []
-
-[env]
+kill_signal = "SIGINT"
+kill_timeout = "5s"
 
 [experimental]
   auto_rollback = true
 
+[env]
+  PRIMARY_REGION = "ewr"
+
 [[services]]
-  http_checks = []
-  internal_port = 8080
-  processes = ["app"]
   protocol = "tcp"
-  script_checks = []
+  internal_port = 8080
+  auto_stop_machines = true
+  auto_start_machines = true
+  processes = ["app"]
+
+  [[services.ports]]
+    port = 80
+    handlers = ["http"]
+    force_https = true
+
+  [[services.ports]]
+    port = 443
+    handlers = ["tls", "http"]
   [services.concurrency]
+    type = "connections"
     hard_limit = 25
     soft_limit = 20
-    type = "connections"
-
-  [[services.ports]]
-    force_https = true
-    handlers = ["http"]
-    port = 80
-
-  [[services.ports]]
-    handlers = ["tls", "http"]
-    port = 443
-
-  [[services.tcp_checks]]
-    grace_period = "1s"
-    interval = "15s"
-    restart_limit = 0
-    timeout = "2s"

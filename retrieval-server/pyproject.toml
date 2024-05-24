@@ -21,7 +21,7 @@ PyPDF2 = "^3.0.1"
 python-pptx = "^0.6.21"
 python-multipart = "^0.0.6"
 arrow = "^1.2.3"
-pinecone-client = "^2.1.0"
+pinecone-client = "^4.1.0"
 
 [tool.poetry.scripts]
 start = "server.main:start"

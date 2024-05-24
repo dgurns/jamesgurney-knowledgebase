@@ -13,5 +13,6 @@ export OPENAI_ORGANIZATION=
 export PINECONE_API_KEY=
 export PINECONE_ENVIRONMENT=
 export PINECONE_INDEX=
+export PINECONE_INDEX_V2=
 
 echo "Environment variables set successfully"

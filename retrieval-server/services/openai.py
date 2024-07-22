@@ -35,14 +35,14 @@ def get_embeddings(texts: List[str]) -> List[List[float]]:
 @retry(wait=wait_random_exponential(min=1, max=20), stop=stop_after_attempt(3))
 def get_chat_completion(
     messages,
-    model="gpt-3.5-turbo",  # use "gpt-4" for better results
+    model="gpt-4o-mini",
 ):
     """
     Generate a chat completion using OpenAI's chat completion API.
 
     Args:
         messages: The list of messages in the chat history.
-        model: The name of the model to use for the completion. Default is gpt-3.5-turbo, which is a fast, cheap and versatile model. Use gpt-4 for higher quality but slower results.
+        model: The name of the model to use for the completion. Default is gpt-4o-mini, which is a fast, cheap and versatile model. Use gpt-4 for higher quality but slower results.
 
     Returns:
         A string containing the chat completion.
@@ -64,14 +64,14 @@ def get_chat_completion(
 @retry(wait=wait_random_exponential(min=1, max=20), stop=stop_after_attempt(3))
 async def get_streaming_chat_completion(
     messages,
-    model="gpt-3.5-turbo",  # use "gpt-4" for better results
+    model="gpt-4o-mini",  # use "gpt-4" for better results
 ) -> AsyncGenerator[str, None]:
     """
     Generate a streaming chat completion using OpenAI's chat completion API.
 
     Args:
         messages: The list of messages in the chat history.
-        model: The name of the model to use for the completion. Default is gpt-3.5-turbo, which is a fast, cheap and versatile model. Use gpt-4 for higher quality but slower results.
+        model: The name of the model to use for the completion. Default is gpt-4o-mini, which is a fast, cheap and versatile model. Use gpt-4 for higher quality but slower results.
 
     Returns:
         A stream returning each chunk of the chat completion.

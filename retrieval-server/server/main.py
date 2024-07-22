@@ -205,7 +205,7 @@ Do not include any URLs which contain the substring 'jamesgurney.com/site/'. Ins
             }
 
         msgs_dict = [chat_message_to_dict(m) for m in msgs]
-        completion = get_chat_completion(msgs_dict, "gpt-3.5-turbo")
+        completion = get_chat_completion(msgs_dict, "gpt-4o-mini")
         return CompletionResponse(completion=completion)
     except Exception as e:
         print("Error:", e)
@@ -254,7 +254,7 @@ Do not include any URLs which contain the substring 'jamesgurney.com/site/'. Ins
 
         msgs_dict = [chat_message_to_dict(m) for m in msgs]
         return StreamingResponse(
-            get_streaming_chat_completion(msgs_dict, "gpt-3.5-turbo"),
+            get_streaming_chat_completion(msgs_dict, "gpt-4o-mini"),
             media_type="text/event-stream",
         )
     except Exception as e:

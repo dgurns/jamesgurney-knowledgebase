@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 
 // run on the edge close to the user since we are just adding a bearer token
 // and proxying a request
-export const runtime = 'experimental-edge';
+export const runtime = 'edge';
 
 export interface CompletionRequest {
 	messages: Array<{ role: 'user' | 'assistant'; content: string }>;

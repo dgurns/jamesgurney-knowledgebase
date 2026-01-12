@@ -1,0 +1,7 @@
+{
+  "id": "httpsgurneyjourneyblogspotcom201005colorbleedinghtml",
+  "title": "Color Bleeding",
+  "date": "2010-05-06",
+  "url": "https://gurneyjourney.blogspot.com/2010/05/color-bleeding.html",
+  "content": "Color bleeding is a term used in the computer graphics industry to describe the way the color of an illuminated surface influences the surfaces around it.Traditional painters usually refer to the effect as “reflected light,” and you can see it in this photo of an Abe Lincoln bust with a colored card in direct sunlight.Here is an example of a digital scene with simple direct illumination (left), and then again with color bleeding (right).Note how the white ball in the right image is tinged with blue on one side and red on the other. The same colored spillover appears on the ceiling and the back wall.The phenomenon is a hot subject in CG rendering right now because new techniques are emerging to accomplish it. The technique called ray-tracing conveys the effect very convincingly, but it takes a lot of computer rendering time.A new technique, using a “point cloud,” to generate the effect, can be accomplished with a fraction of the rendering time.The recent Pixar movie “Up” used this technique to great effect in the sequence where the house is floating through the upper atmosphere.Here’s a good overview by a lighting expert from \"Up\" on CG Society (Part 1andPart 2), explaining its use in “Up”I’m indebted to Jason Hill ofBlizzardfor sharing his knowledge with me."
+}

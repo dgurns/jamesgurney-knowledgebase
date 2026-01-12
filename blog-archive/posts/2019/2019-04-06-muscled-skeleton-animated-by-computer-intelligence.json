@@ -1,0 +1,7 @@
+{
+  "id": "httpsgurneyjourneyblogspotcom201904muscledskeletonanimatedbydeeprlhtml",
+  "title": "Muscled Skeleton Animated by Computer Intelligence",
+  "date": "2019-04-06",
+  "url": "https://gurneyjourney.blogspot.com/2019/04/muscled-skeleton-animated-by-deeprl.html",
+  "content": "A computer graphics team from Seoul National University has developed a virtual skeleton with 346 rope-like muscles. It is animated by a method calleddeep reinforcement learning, so it moves according to its own learning process, not by human intervention.(Link to video on YouTube)As the character walks, dances, lifts weights, and runs, the muscles light up. It's fascinating to see which muscles come into play in a given movement. If the muscles are overstressed, the character collapses.When one of the feet is replaced by a prosthesis, the character adapts its style of movement accordingly. If the character suffers an injury, the resulting movements simulate what you would expect from a human patient experiencing the same condition. In many ways the movements don't resemble human movements, though. For example, it doesn't protect its face when it falls.----Scientific paper:Scalable Muscle-actuated Human Simulation and Control"
+}

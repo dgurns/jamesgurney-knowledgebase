@@ -1,0 +1,7 @@
+{
+  "id": "httpsgurneyjourneyblogspotcom201710reconstructingfacefromsingleimagehtml",
+  "title": "Reconstructing a Face from a Single Image",
+  "date": "2017-10-04",
+  "url": "https://gurneyjourney.blogspot.com/2017/10/reconstructing-face-from-single-image.html",
+  "content": "A free online toollets you create a 3D reconstruction of a face from a single image.Van Dyck'sPortrait of Cornelis Van Der Geestin 3DYou can input a single photo or a painting. After it processes and outputs, you can drag the 3D model around with your mouse and see it in a variety of angles.3D Alfred E. Neuman, thanksMAD MagazineIt's fun to try it out on a familiar face that's usually seen only from one angle, like Mad Magazine's Alfred E. Neuman.The tool was created by computer vision scientists at the University of Nottingham using machine-learning software called aConvolutional Neural Network(CNN).\"Our CNN works with just a single 2D facial image, does not require accurate alignment nor establishes dense correspondence between images, works for arbitrary facial poses and expressions, and can be used to reconstruct the whole 3D facial geometry (including the non-visible parts of the face) bypassing the construction (during training) and fitting (during testing) of a 3D Morphable Model.\"------(Free interactive tool)Face Reconstruction from a Single Image(Scientific paper)Large Pose 3D Face Reconstruction from a Single Image via Direct Volumetric CNN RegressionThanks, Geoff Charlewood"
+}

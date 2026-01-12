@@ -1,0 +1,7 @@
+{
+  "id": "httpsgurneyjourneyblogspotcom201809aisystemsthatgeneratephotorealhtml",
+  "title": "A.I. systems that generate photo-real video",
+  "date": "2018-09-11",
+  "url": "https://gurneyjourney.blogspot.com/2018/09/ai-systems-that-generate-photo-real.html",
+  "content": "Computer networks are getting pretty good at synthesizing video from fragmentary sources, as shown in this latest production from Two-Minute Papers (link to YouTube).Photo-realistic expressions at right are generatedpurely from the line drawings at left.SourceThegenerative adversarial networkscan effectively create video from animated line drawings, as in the still frame above. They're also getting better at classifying the elements of a scene into its various components and translating one class of objects into another. So, for example, a tree-lined street can be changed so that it's lined with buildings instead, or vice versa.This latest iteration does so without as many weird jumps or gaps.--Read the scientific paper here as a PDF"
+}

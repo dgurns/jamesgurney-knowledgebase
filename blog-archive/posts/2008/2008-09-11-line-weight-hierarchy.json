@@ -1,0 +1,7 @@
+{
+  "id": "httpsgurneyjourneyblogspotcom200809lineweighthierarchyhtml",
+  "title": "Line Weight Hierarchy",
+  "date": "2008-09-11",
+  "url": "https://gurneyjourney.blogspot.com/2008/09/line-weight-hierarchy.html",
+  "content": "Computer drawings made with the CAD program often show the  lines all the same thickness or weight. In a large or complex drawing made with uniform line weight, it can be a bit difficult to make out what’s important.Architects learn to prioritize certain lines and give them greater weight to help the eye sort things out. This “line weight hierarchy” follows specific rules.First, as an object gets closer to the viewer, it should be drawn with a heavier line.Within a given form, the heaviest line should be reserved for the outer contour or silhouette (a).The second heaviest line should be used for \"plane breaks\" (b)—that is, lines within the form that define the edge where two planes meet.The finest lines belong to surface details within a given plane (c).If you reverse those rules and put the heaviest lines in the back of the scene or on the superficial details, you can see how confusing the drawing becomes.Thanks toHenry Sorensonfor explaining this to me.CAD drawing from Rough Rider Industries,link."
+}

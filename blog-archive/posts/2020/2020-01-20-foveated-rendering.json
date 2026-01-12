@@ -1,0 +1,7 @@
+{
+  "id": "httpsgurneyjourneyblogspotcom202001foveatedrenderinghtml",
+  "title": "Foveated Rendering",
+  "date": "2020-01-20",
+  "url": "https://gurneyjourney.blogspot.com/2020/01/foveated-rendering.html",
+  "content": "In this new study, a neural network compresses video data by concentrating the fine detail only in areas where we're looking with our foveas, the central area of our vision where we perceive more information. (Link to YouTube)There are two ways of achieving foveated rendering. One ways is to use an eye tracking system connected to a virtual reality headset to guide the reduction of rendering data by focusing the detail only where we're actually looking.A more primitive method is to make educated guesses about where people are likely to look in a scene and put the detail there.Obviously this has strong applications to what we do as painters. We don't need to put detail everywhere in a picture. A painting will look super detailed as long as the fine-grained information is concentrated in the faces or other key areas.----Wikipedia on Foveated RenderingFoveated ImagingFacebook research paper:DeepFovea: Neural Reconstruction for Foveated Rendering and Video Compression using Learned Statistics of Natural Videos"
+}

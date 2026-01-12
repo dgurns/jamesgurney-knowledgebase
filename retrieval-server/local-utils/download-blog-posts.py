@@ -295,14 +295,13 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-    python download-blog-posts.py --output-dir ../../blog-archive
-    python download-blog-posts.py --resume  # Continue interrupted download
-    python download-blog-posts.py --delay 2  # Slower requests (be extra nice)
+    uv run download-blog-posts.py --output-dir ../../blog-archive
+    uv run download-blog-posts.py --resume  # Continue interrupted download
+    uv run download-blog-posts.py --delay 2  # Slower requests (be extra nice)
         """
     )
     parser.add_argument(
         '--output-dir', '-o',
-        type=Path,
         default=Path('../../blog-archive'),
         help='Output directory for downloaded posts (default: ../../blog-archive)'
     )

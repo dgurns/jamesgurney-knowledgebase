@@ -1,0 +1,7 @@
+{
+  "id": "httpsgurneyjourneyblogspotcom201612compressingfaceshtml",
+  "title": "Compressing faces",
+  "date": "2016-12-10",
+  "url": "https://gurneyjourney.blogspot.com/2016/12/compressing-faces.html",
+  "content": "Can you recognize the faces below? (Answers at bottom of post). The faces are compressed so the width is only 25% of the original photo.Source:Pawan Sinha, MITMany computer vision systems are premised on the idea of making absolute measurements within the face, the way we would carefully measure when drawing or painting from life.From WiredBut apparently the human visual system does not depend critically on exact measurements. Scientists have discovered recognition doesn't suffer much with proportionally distorted faces. As long as the measurements are proportional within a region or across a single dimension—that is, as long as theratiosare preserved—recognition performance isn't greatly affected.So what structural aspects of the face are the most important for recognizing faces? The researchers conclude: \"It is possible then that human encoding of faces utilizes such ratios (we refer to them as iso-dimension ratios), and this might constitute a useful strategy for computer vision systems as well. \"Answers: Ronald Reagan, Jason Alexander, Prince Charles, George Bush, Robin Williams, Woody AllenCredits:G. J. Hole, P. A. George, K. Eaves, and A. Razek, B.Effects of geometric distortionson face recognition performance, [Perception, vol. 31, no. 10, pp. 1221–1240, 2002.Pawan Sinha, MIT"
+}

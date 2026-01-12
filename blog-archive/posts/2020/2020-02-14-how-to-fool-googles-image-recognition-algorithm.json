@@ -1,0 +1,7 @@
+{
+  "id": "httpsgurneyjourneyblogspotcom202002howtofoolgooglesimagerecognitionhtml",
+  "title": "How to fool Google's image-recognition algorithm",
+  "date": "2020-02-14",
+  "url": "https://gurneyjourney.blogspot.com/2020/02/how-to-fool-googles-image-recognition.html",
+  "content": "Google's image-recognition algorithm does a pretty good job of recognizing objects—as long as they're positioned in their normal orientation relative to the background. But these neural networks fail if the objects are positioned upside down or rotated even slightly.\"A fire truck, for example, seen from head on, could be correctly recognized. But once pointed up in the air, and turned around several times, the same fire truck is mis-classified by the neural net as a school bus or a fireboat or a bobsled. The upshot is that the state of the art in image recognition is 'naive,' and some greater understanding of three-dimensional structures seems needed to help them get better. State of the art neural networks such as Google's Inception are good at 'classifying' things in pictures, they conclude, but they are not really recognizing objects, in the true sense of that expression.\"Read more: ZD Net:Google's image recognition AI fooled by new tricks"
+}

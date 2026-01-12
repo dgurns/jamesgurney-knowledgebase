@@ -1,0 +1,7 @@
+{
+  "id": "httpsgurneyjourneyblogspotcom201811appearancetransferhtml",
+  "title": "Appearance Transfer",
+  "date": "2018-11-08",
+  "url": "https://gurneyjourney.blogspot.com/2018/11/appearance-transfer.html",
+  "content": "Computer networks are able to generate photographically realistic imagesfrom a simple written description. They canrecognize and distinguish the various elements in a photo. And they canalter the weather or the time of dayin a video clip.In this post, we'll see how they can start with a simple outline drawing and complete it to match the appearance of another object. So, for example, a line drawing of a purse can be rendered to match the color scheme of a shoe.The input is a simple outline drawing of a handbag (top row). The network fills them in using the colors from a photo of a shoe (left-most image).Even more remarkably, the system can start with the basic input of a mannikin pose (top row in array below), and then transfer to that pose the appearance of a photo of a model in a completely different pose (left column).The system will generate a plausibly photographic image of that model in the desired pose.This video by Two Minute Papers summarizes the research (Link to YouTube)For those of you who are interested in how these computer innovations will affect creative jobs, check out this talk by Andrew Price of Blender, who sounds an optimistic note. (Link to YouTube)----Scientific paper:A VARIATIONAL U-NET FOR CONDITIONAL APPEARANCE AND SHAPE GENERATIONPreviously:Text to Image SynthesisImage TranslationSemantic Image Mapping"
+}

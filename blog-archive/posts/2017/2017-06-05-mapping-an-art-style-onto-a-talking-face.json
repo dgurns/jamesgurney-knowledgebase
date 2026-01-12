@@ -1,0 +1,7 @@
+{
+  "id": "httpsgurneyjourneyblogspotcom201706mappingartstyleontotalkingfacehtml",
+  "title": "Mapping an art style onto a talking face",
+  "date": "2017-06-05",
+  "url": "https://gurneyjourney.blogspot.com/2017/06/mapping-art-style-onto-talking-face.html",
+  "content": "Daniel Sýkorahas developed software that uses the stylistic information from a painting or sculpture,and applies it to video of a moving face, changing the metrics to match the target face. (Link to YouTube) Note: the video is silent.It's reminiscent of a Snapchat filter or of a painted-over video, but it seems a bit more sophisticated than either.It would be fun to see what would happen if they tried to push the limits of the software by testing it against an animal face or a Picasso.The paper, presented at Siggraph, is called \"Example-Based Synthesis of Stylized Facial Animations.\""
+}

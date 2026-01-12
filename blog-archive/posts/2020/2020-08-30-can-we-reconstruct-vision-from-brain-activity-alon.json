@@ -1,0 +1,7 @@
+{
+  "id": "httpsgurneyjourneyblogspotcom202008canwereconstructvisionfrombrainhtml",
+  "title": "Can We Reconstruct Vision from Brain Activity Alone?",
+  "date": "2020-08-30",
+  "url": "https://gurneyjourney.blogspot.com/2020/08/can-we-reconstruct-vision-from-brain.html",
+  "content": "Scientists have scanned the visual brain while a person is looking at something to figure out if there were recognizable patterns in the brain that corresponded to the image the subject was looking at.Researchers then took information from the scan feed and input into an image generating network (Deep Neural Network) that went through a series of iterations to match the inputs coming from the brain. (Link to YouTube) The resulting video of the evolving iterations is paired with the original target image.The flickering, abstract video seems to put special weight on symmetry, heads, and eyes."
+}

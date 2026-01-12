@@ -1,0 +1,7 @@
+{
+  "id": "httpsgurneyjourneyblogspotcom201112computervisionhtml",
+  "title": "Computer vision",
+  "date": "2011-12-05",
+  "url": "https://gurneyjourney.blogspot.com/2011/12/computer-vision.html",
+  "content": "In the rapidly developing field of artificial intelligence, the detection of edges is an important first step in analyzing and processing images. Edge detection is thought of as one of the primary steps in identifying and separating individual forms from each other and from the background.Pioneers in this field face definite challenges:1. Fragmentation, where the image processor can’t connect discontinuous segments of an edge.2. False edges, where an edge is identified that doesn’t really belong.3. Focal blur, where a sharp edge is not present because of optical blurring.Using two cameras oriented stereoscopically helps by giving depth cues that would otherwise have to be inferred from a single image. Above is an artist’s rendering of a NASA Mars rover fromWikipedia Commons.The prospect of machines that can see for themselves is still on the horizon. Right now, the applications include autonomous rovers and drones and industrial robots, but there are already early prototypes of machines that can assist the blind, drive cars, and take supersmart photos..----------Wikipedia on Edge DetectionPreviously:Lines and the Brain"
+}

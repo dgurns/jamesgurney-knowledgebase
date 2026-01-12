@@ -1,0 +1,7 @@
+{
+  "id": "httpsgurneyjourneyblogspotcom201808realisticgraphicsviavoxelconehtml",
+  "title": "Realistic Graphics via Voxel Cone Tracing",
+  "date": "2018-08-04",
+  "url": "https://gurneyjourney.blogspot.com/2018/08/realistic-graphics-via-voxel-cone.html",
+  "content": "Creating photo-real graphics in real time on a normal computer is difficult because it requires calculating light transport, or the infinite potential pathways of light rays that interact with the subject at hand.By using a technique calledvoxelcone tracing, a remarkable level of naturalism is possible within fast computational times, which makes it applicable to video game graphics.--Watch the YouTube video by Two Minute Papers"
+}

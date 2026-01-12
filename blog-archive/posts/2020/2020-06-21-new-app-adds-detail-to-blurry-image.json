@@ -1,0 +1,7 @@
+{
+  "id": "httpsgurneyjourneyblogspotcom202006newappaddsdetailtoblurryimagehtml",
+  "title": "New App Adds Detail to Blurry Image",
+  "date": "2020-06-21",
+  "url": "https://gurneyjourney.blogspot.com/2020/06/new-app-adds-detail-to-blurry-image.html",
+  "content": "New software is able to take a low resolution image and add missing detail.The tool supplies missing information using a generative adversarial network. It draws on a big data set to generate a plausible looking face that matches the pixellated version.Researchers at Duke University who developed it describe the process this way: \"The system scours AI-generated examples of high-resolution faces, searching for ones that look as much as possible like the input image when shrunk down to the same size.\"The resulting face is photographically detailed, and it fits the initial pixellated image, but it's really only one of several possible solutions.-----Articles about the process fromHypebeastandTechxplore"
+}

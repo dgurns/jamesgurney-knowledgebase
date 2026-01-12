@@ -1,0 +1,7 @@
+{
+  "id": "httpsgurneyjourneyblogspotcom202312raytracingandpathtraininghtml",
+  "title": "Ray Tracing and Path Tracing",
+  "date": "2023-12-20",
+  "url": "https://gurneyjourney.blogspot.com/2023/12/ray-tracing-and-path-training.html",
+  "content": "Ray tracing and path tracing are both techniques used in computer graphics to simulate the behavior of light.Ray tracing is a rendering technique that simulates the behavior of light by tracing the paths of individual rays. In classic ray tracing, a specific algorithm calculates the reflection, refraction, and shading of light rays as they interact with surfaces in a scene. This technique has been widely used in computer graphics to generate realistic images that accurately represent the behavior of light.Path tracing is a form of ray tracing where the rays are traced across multiple bounces to take the contribution of indirect lighting to the scene. Path tracing is more computationally intensive than classic ray tracing, but it can render all lighting in a more physically correct way.As a result it's better for capturing caustics, global illumination, subsurface scattering, indirect lighting and the soft shadows that occur in real-world environments.The gameCyberpunk 2077 RT Overdrivelets you switch from one to the other, and the subtle differences are only really apparent when you see the same scene rendered with different techniques."
+}

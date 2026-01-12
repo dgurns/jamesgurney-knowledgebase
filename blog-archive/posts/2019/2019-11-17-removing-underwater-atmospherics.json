@@ -1,0 +1,7 @@
+{
+  "id": "httpsgurneyjourneyblogspotcom201911removingunderwateratmosphericshtml",
+  "title": "Removing Underwater Atmospherics",
+  "date": "2019-11-17",
+  "url": "https://gurneyjourney.blogspot.com/2019/11/removing-underwater-atmospherics.html",
+  "content": "Engineer and oceanographer Derya Akkaynak has developed an algorithm called Sea-Thru that removes the blue-green atmospherics of underwater photographs and renders them in \"true\" colors.Photos courtesyScientific AmericanThe app is more than an overall hue shift, however. It uses distance data and removes a variety of aqueous atmospheric effects to show the colors of coral reefs as they would appear in air.Scientific Americansays: \"Sea-thru's image analysis factors in the physics of light absorption and scattering in the atmosphere, compared with that in the ocean, where the particles that light interacts with are much larger. Then the program effectively reverses image distortion from water pixel by pixel, restoring lost colors. One caveat is that the process requires distance information to work. Akkaynak takes numerous photographs of the same scene from various angles, which Sea-thru uses to estimate the distance between the camera and objects in the scene—and, in turn, the water's light-attenuating impact.\"----Sea-thru Brings Clarity to Underwater PhotosLink to YouTube"
+}

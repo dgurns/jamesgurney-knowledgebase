@@ -1,0 +1,7 @@
+{
+  "id": "httpsgurneyjourneyblogspotcom201810creatingsculpturesfrom2dvideoshtml",
+  "title": "Creating Sculptures from 2D Videos",
+  "date": "2018-10-21",
+  "url": "https://gurneyjourney.blogspot.com/2018/10/creating-sculptures-from-2d-videos.html",
+  "content": "Animators, athletes, and dancers need to study and understand complex motions. But even when you review video footage, it can be hard to see exactly what's going on with all the moving parts traveling in three dimensions.MIT’s Computer Science and Artificial Intelligence Laboratory (CSAIL) has developed an algorithm called MoSculpt that creates a detailed 3D model of a broad movement.The input can be a simple 2D video of a person in motion. The subject doesn't have to be fitted withmo-capmarkers and they don't have to be shot in front of blank backgrounds. (Link to YouTube)The software lets you choose various input and output parameters. You can either rotate the 3D form virtually on the computer or print them out as an actual sculpture.The results resemble the 19th century stroboscopic photos and sculptures byÉtienne-Jules Marey, which I discussed recently in the post onChronophography.----Read more:MoSculp: MIT CSAIL uses AI to create 3D printed 'motion sculptures' from 2D videosCreating 3-D-printed “motion sculptures” from 2-D videosPreviously:Chronophography"
+}

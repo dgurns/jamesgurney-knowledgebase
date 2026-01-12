@@ -1,0 +1,7 @@
+{
+  "id": "httpsgurneyjourneyblogspotcom202104textdrivenmanipulationhtml",
+  "title": "Text Driven Manipulation",
+  "date": "2021-04-10",
+  "url": "https://gurneyjourney.blogspot.com/2021/04/text-driven-manipulation.html",
+  "content": "Suppose an art director looked at one of your pieces and said \"Great, but could you make it more goth?\"You'd know what to do, right? How about taking a cat picture and making it more cute or changing a tiger into a lion?Computers, using large data sets, can accomplish such manipulations. In the top row of each pair is the input image. Below that is the manipulation. The phrase is the text prompt used to drive the manipulation.---See the scientific paper:StyleCLIP: Text-Driven Manipulation of StyleGAN Imagery"
+}

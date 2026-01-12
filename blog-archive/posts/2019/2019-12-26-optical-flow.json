@@ -1,0 +1,7 @@
+{
+  "id": "httpsgurneyjourneyblogspotcom201912opticalflowhtml",
+  "title": "Optical Flow",
+  "date": "2019-12-26",
+  "url": "https://gurneyjourney.blogspot.com/2019/12/optical-flow.html",
+  "content": "When we look at the world, it's rarely the case that our head is held still and the scene in front of us remains static, too.When we're driving a car, the scene flows outward from the vanishing point straight ahead of us. At the margins of our view, the movement is extreme, stretched, and blurry.This phenomenon is sometimes called \"optical flow\" by psychologists and computer graphics people who need to identify or render moving objects.Traffic systems can track the velocity and directional vectors of vehicles as they move normally in space, and they can detect abnormalities such as speeders or aggressive drivers.Image viaBaldpunkOften the whole scene is dynamically shifting, with our viewpoint changing to follow a moving person or object. Each part of that larger dynamic system has its own relative arc of action.I like to use the term \"speed blur\" to refer to the blurring of the background when the viewer is moving through space, and \"motion blur\" to refer to the blurring of a moving object relative to the viewer.Comic artists, video game artists, and animators are all very familiar with these effects, but it's unusual for painters to try to capture them. There are exceptions, such as the wildlife painterManfred Schatz.-----Optical Flow on WikipediaManfred Schatzon GurneyJourney"
+}

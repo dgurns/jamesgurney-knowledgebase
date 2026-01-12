@@ -1,0 +1,7 @@
+{
+  "id": "httpsgurneyjourneyblogspotcom201907aigeneratesoddlyevocativehtml",
+  "title": "A.I. Generates Oddly Evocative Abstractions",
+  "date": "2019-07-03",
+  "url": "https://gurneyjourney.blogspot.com/2019/07/ai-generates-oddly-evocative.html",
+  "content": "A high school student named Robbie Barat, working with machine learning software, has developed a series of images that is strangely provocative.He fed the generative adversarial network with hundreds of nude painted portraits from a few hundred years ago. The \"generator\" AI would then create variations of that dataset to try to fool a \"discriminator\" network that was primed to distinguish real images from fabricated ones.Barat told CNET: \"'The generator tries to come up with paintings that fool the discriminator, and the discriminator tries to learn how to tell the difference between real paintings from the dataset and fake paintings the generator feeds it.\"The way he configured the system, the images lack faces or immediately identifiable human parts, but they still have the feeling of fleshiness and weight.The resulting images resemble something from modern art, and they remind us of how our visual brains seem to want to unconsciously resolve images into something basic that we can recognize."
+}

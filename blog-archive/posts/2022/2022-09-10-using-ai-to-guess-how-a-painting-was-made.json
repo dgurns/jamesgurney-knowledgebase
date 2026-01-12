@@ -1,0 +1,7 @@
+{
+  "id": "httpsgurneyjourneyblogspotcom202209usingaitoguesshowpaintingwasmadehtml",
+  "title": "Using AI to Guess How a Painting Was Made",
+  "date": "2022-09-10",
+  "url": "https://gurneyjourney.blogspot.com/2022/09/using-ai-to-guess-how-painting-was-made.html",
+  "content": "Scientists have developed machine-learning system that analyzes existing paintings and reconstructs how they might have been painted.The authors say:\"The system, which the team calls“Timecraft,”was trained on more than 200 existing time-lapse videos that people posted online of both digital and watercolor paintings. From there, the team created a convolutional neural network that can look at a new painting that it’s never seen before, and figure out the most likely way it was created.\"The study is a couple years old now, and with more extensive training data and more computer power, the results would now be a lot higher resolution and more accurate.Link to YouTubeScience paper:\"Using AI to recreate how artists painted their masterpieces\""
+}

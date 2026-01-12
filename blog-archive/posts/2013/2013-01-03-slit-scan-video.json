@@ -1,0 +1,7 @@
+{
+  "id": "httpsgurneyjourneyblogspotcom201301slitscanvideohtml",
+  "title": "Slit-Scan Video",
+  "date": "2013-01-03",
+  "url": "https://gurneyjourney.blogspot.com/2013/01/slit-scan-video.html",
+  "content": "(Link to YouTube video) Slit-scan video transforms everyday scenes by elongating, compressing, and twisting elements into trippy dreamscapes. This one was made withan inexpensive Mac app.Kamil Sladek explains how it works onGizmodo:You can make your own slit camera out of any video capable digital camera with a regular sensor and a regular lens. All you need to do is the following:1. record a video of your action2. extract each frame as an individual image (the opposite to what you would do for a time lapse)3. extract a vertical single pixel wide line from each image (for example a line from the center)4. stack those lines horizontally from left to right to form an actual \"slit scan\" imageThis can be automated by tools like e.g. ImageMagickand the longer your initial video was, the wider your image will be. In fact, the width of your slit scan image will have exactly the same amount of pixels as your initial video's frame number.Now, to go one step further you can proceed for all the other vertical lines of your images and create one slit scan image for each particular set of vertical lines. This will give you a set of as many slit scan images as your initial video was wide in pixels. Combining that set of slit scan images to a video (this time exactly as in a time lapse) your result can look like this.Via BoingBoing"
+}

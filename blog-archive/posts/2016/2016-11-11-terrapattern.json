@@ -1,0 +1,7 @@
+{
+  "id": "httpsgurneyjourneyblogspotcom201611terrapatternhtml",
+  "title": "Terrapattern",
+  "date": "2016-11-11",
+  "url": "https://gurneyjourney.blogspot.com/2016/11/terrapattern.html",
+  "content": "Terrapatternis an open-source tool for finding repeating visual patterns in satellite photos. The process starts when you select a section of a satellite photo (blue square in upper left). The algorithm then selects similar patterns in a publicly available database.On theTerrapattern website, there's a pageof examples where the tool found similar patters of sand traps, purple tennis courts, school bus parking lots, and airport runway markings.Right now the tool isn't much more than a novelty with limited usefulness. But it's a hint of other similar-search algorithms (like Google images, but with other databases) that will emerge in the future which will be able to find other artists with your style or people who look like you.----Terrapattern"
+}

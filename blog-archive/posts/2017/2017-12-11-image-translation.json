@@ -1,0 +1,7 @@
+{
+  "id": "httpsgurneyjourneyblogspotcom201712imagetranslationhtml",
+  "title": "Image Translation",
+  "date": "2017-12-11",
+  "url": "https://gurneyjourney.blogspot.com/2017/12/image-translation.html",
+  "content": "A new machine-learning algorithm can take a photo of a street scene and translate the image to another time of day or another weather condition.For example, the photo on the left shows is taken from a car on a rainy day. On the right, the computer translates the scene into a sunny day with a blue sky.Here the algorithm does the opposite, translating a photo of a sunny day (left) into a virtual image of the same scene in rainy conditions (right).The night-to-day translations are impressive because there seems so little information to start with in the photo at left, and the change is so radical.The system can also translate a photographic street scene into a graphic that looks like it comes from a video game — or it can take a still from a video game and make it look more photographic.It can also change the hair color of a person, or alter a dog from one breed to another.This machine-learning technology, driven bygenerative adversarial networks, is progressing very quickly, so any weaknesses or limitations we see in the results now will be overcome rapidly.We can no longer say \"Photos don't lie.\"-----Read More:Google photo collection with lots more pairs of examples.Scientists' paper as a PDFVideo Game Graphics To Reality And BackRelated PostsText-to-Image SynthesisGenerative design resembles Art NouveauMorphing Celebrities"
+}
